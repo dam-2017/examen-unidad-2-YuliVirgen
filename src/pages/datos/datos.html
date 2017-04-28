@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Datos de Usuario
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formulario" (ngSubmit)="Terminar()" >
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Nombre:</ion-label>
+        <ion-input formControlName="nombre" type="text" placeholder="Ingrese un nombre">
+          </ion-input>
+      </ion-item>
+          <!--validar-->
+          <div *ngIf="formulario.get('nombre').errors && this.formulario.get('nombre').dirty">
+            <p *ngIf="formulario.get('nombre').hasError('required')" color="danger">Campo Obligatorio</p>
+          </div>
+
+      <ion-item>
+        <ion-label stacked>Apellido Materno:</ion-label>
+        <ion-input formControlName="apeM" type="text" placeholder="Ingrese su apellido materno">
+          </ion-input>
+      </ion-item>
+          <!--validar-->
+          <div *ngIf="formulario.get('apeM').errors && this.formulario.get('apeM').dirty">
+            <p *ngIf="formulario.get('apeM').hasError('required')" color="danger">Campo Obligatorio</p>
+          </div>
+        
+
+      <ion-item>
+        <ion-label stacked>Apellido Paterno:</ion-label>
+        <ion-input formControlName="apeP" type="text" placeholder="Ingrese su apellido paterno">
+          </ion-input>
+
+        </ion-item>
+          <!--validar-->
+          <div *ngIf="formulario.get('apeP').errors && this.formulario.get('apeP').dirty">
+            <p *ngIf="formulario.get('apeP').hasError('required')" color="danger">Campo Obligatorio</p>
+          </div>
+
+        <ion-item>
+        <ion-label stacked>Fecha de Nacimiento:</ion-label>
+        <ion-input formControlName="nombre" type="text" placeholder="Ingrese su fecha de nacimiendo">
+          </ion-input>
+      </ion-item>
+          <!--validar-->
+          <div *ngIf="formulario.get('FecNac').errors && this.formulario.get('FecNac').dirty">
+            <p *ngIf="formulario.get('FecNac').hasError('required')" color="danger">Campo Obligatorio</p>
+          </div>
+
+
+      <ion-item>
+        <ion-label stacked>RFC:</ion-label>
+        <ion-input formControlName="rfc" type="text">
+          <!--validar-->
+          
+        </ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-fab bottom right >
+  <button ion-fab [disabled]="!formulario.valid" type="submit">Terminar</button>
+</ion-fab>
+  </form>
+  </ion-content>

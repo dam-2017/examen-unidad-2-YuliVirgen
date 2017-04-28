@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    Proveedores
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formulario" (ngSubmit)="Ingresar()" >
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Nombre de Usuario:</ion-label>
+        <ion-input formControlName="usuario" type="text" placeholder="Ingrese un nombre para su usuario"></ion-input>
+        </ion-item>
+          <!--validar-->
+          <div *ngIf="formulario.get('usuario').errors && this.formulario.get('usuario').dirty">
+            <p *ngIf="formulario.get('usuario').hasError('required')" color="danger">No puede estar vacio</p>
+            <p *ngIf="formulario.get('usuario').hasError('minlength')" color="danger">6 caracteres como mínimo</p>
+            </div>
+      
+  <!--contraseña-->
+        <ion-item>
+        <ion-label stacked>Contraseña:</ion-label>
+        
+        <ion-input formControlName="contraseña" type="password" placeholder="Ingrese su contraseña"></ion-input>
+        </ion-item>
+        <div *ngIf="formulario.get('contraseña').errors && this.formulario.get('contraseña').dirty">
+          <p *ngIf="formulario.get('contraseña').hasError('required')" color="danger">No puede estar vacio</p>
+          <p *ngIf="formulario.get('contraseña').hasError('minlength')" color="danger">8 caracteres como mínimo</p>
+         <!-- <p *ngIf="formulario.get('contraseña').hasError('pattern')" color="danger">debe contener un simbolo y un digito</p>-->
+        </div>
+    </ion-list>
+
+<ion-fab bottom right >
+  <button ion-fab [disabled]="!formulario.valid" type="submit">Ingresar</button>
+</ion-fab>
+  </form>
+
+</ion-content>
